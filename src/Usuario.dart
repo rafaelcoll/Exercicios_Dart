@@ -25,6 +25,23 @@ class User {
     this._company = Company.fromJson(json.encode(jsonAuxMap['company']));
   }
 
+  String? getValue(String? field){
+    if (field == null) {
+      return null;
+    }
+    switch(field){
+      case 'id': return _id.toString();
+      case 'name': return _name;
+      case 'username':return _username;
+      case 'email':return _email;
+      case 'address':return _address.toString();
+      case 'phone':return _phone;
+      case 'website':return _website;
+      case 'company':return _company.toString();
+      default: return throw Exception('Campo inexistente.');
+    }
+  }
+
   @override
   String toString() {
     return 'User{id: $_id, name: $_name, username: $_username, email: $_email, address: $_address, phone: $_phone, website: $_website, company: $_company}';
